@@ -217,6 +217,9 @@
     object-fit: contain;
     border-radius: 10px;
     margin-bottom: 15px;
+    user-select: none;
+    -webkit-user-drag: none;
+    pointer-events: none;
 }
 
 .modal-title {
