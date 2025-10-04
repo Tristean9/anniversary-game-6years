@@ -21,6 +21,70 @@
     transition: width 0.5s ease;
 }
 
+.test-mode-toggle {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid #667eea;
+    color: #667eea;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    z-index: 1001;
+    transition: all 0.3s;
+}
+
+.test-mode-toggle:hover {
+    background: #667eea;
+    color: white;
+}
+
+.test-nav {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 15px 30px;
+    border-radius: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    z-index: 1001;
+}
+
+.test-nav-btn {
+    background: #667eea;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.test-nav-btn:hover:not(:disabled) {
+    background: #5568d3;
+    transform: scale(1.05);
+}
+
+.test-nav-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.test-nav-info {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #2d3436;
+    min-width: 60px;
+    text-align: center;
+}
+
 .scene {
     width: 100%;
     height: 100%;
