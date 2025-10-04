@@ -242,6 +242,136 @@
     font-weight: bold;
 }
 
+.intro-screen {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.intro-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: white;
+}
+
+.intro-title {
+    font-size: 4rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+    animation: fadeInDown 1s ease-out;
+}
+
+.intro-text {
+    font-size: 1.5rem;
+    line-height: 2;
+    margin-bottom: 50px;
+    opacity: 0;
+    animation: fadeIn 1s ease-out 0.5s forwards;
+}
+
+.intro-button {
+    background: white;
+    color: #667eea;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 30px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    cursor: pointer;
+    opacity: 0;
+    animation: fadeIn 1s ease-out 1s forwards;
+    transition: all 0.3s;
+}
+
+.intro-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+}
+
+.intro-door-left,
+.intro-door-right {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background: #2d3436;
+    z-index: -1;
+    transition: transform 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.intro-door-left {
+    left: 0;
+    box-shadow: 5px 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.intro-door-right {
+    right: 0;
+    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.intro-light {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 70%);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 1.5s ease-out;
+}
+
+.intro-screen.transitioning .intro-door-left {
+    transform: translateX(-100%);
+}
+
+.intro-screen.transitioning .intro-door-right {
+    transform: translateX(100%);
+}
+
+.intro-screen.transitioning .intro-light {
+    opacity: 1;
+}
+
+.intro-screen.transitioning .intro-content {
+    animation: fadeOut 0.8s ease-out forwards;
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
 .complete-screen {
     width: 100%;
     height: 100%;

@@ -1,26 +1,37 @@
 import {useState} from 'react';
-import {AnimatePresence} from 'framer-motion';
+import {AnimatePresence, motion} from 'framer-motion';
 import Scene from './components/Scene';
 import MemoryModal from './components/MemoryModal';
 import {scenes} from './data';
 import type {ClickableItem, Memory} from './types';
 import './App.css';
 
-type GameStage = 'playing' | 'complete';
+type GameStage = 'intro' | 'playing' | 'complete';
 
 function App() {
     const [currentSceneIndex, setCurrentSceneIndex] = useState(0);
     const [foundItems, setFoundItems] = useState<Set<number>>(new Set());
     const [selectedMemory, setSelectedMemory] = useState<Memory | null>(null);
-    const [gameStage, setGameStage] = useState<GameStage>('playing');
+    const [gameStage, setGameStage] = useState<GameStage>('intro');
     const [testMode, setTestMode] = useState(false);
+    const [isTransitioning, setIsTransitioning] = useState(false);
 
     const isTestEnv = import.meta.env.MODE === 'test';
     const currentScene = scenes[currentSceneIndex];
     const totalItems = scenes.reduce((sum, scene) => sum + scene.items.length, 0);
 
+    const handleStartGame = () => {
+        setIsTransitioning(true);
+        setTimeout(() => {
+            setGameStage('playing');
+        }, 1500);
+    };
+
     const goToNextScene = () => {
-        if (currentSceneIndex < scenes.length - 1) {
+        if (gameStage === 'intro') {
+            setGameStage('playing');
+            setCurrentSceneIndex(0);
+        } else if (currentSceneIndex < scenes.length - 1) {
             setCurrentSceneIndex(prev => prev + 1);
         } else {
             setGameStage('complete');
@@ -28,8 +39,13 @@ function App() {
     };
 
     const goToPrevScene = () => {
-        if (currentSceneIndex > 0) {
+        if (gameStage === 'complete') {
+            setGameStage('playing');
+            setCurrentSceneIndex(scenes.length - 1);
+        } else if (currentSceneIndex > 0) {
             setCurrentSceneIndex(prev => prev - 1);
+        } else {
+            setGameStage('intro');
         }
     };
 
@@ -58,9 +74,73 @@ function App() {
         }
     };
 
-    if (gameStage === 'complete') {
-        return (
-            <div className="app">
+    return (
+        <AnimatePresence mode="wait">
+            {gameStage === 'intro' ? (
+                <motion.div
+                    key="intro"
+                    className="app"
+                    initial={{opacity: 0}}
+                    animate={{opacity: 1}}
+                    exit={{opacity: 0}}
+                    transition={{duration: 0.8}}
+                >
+                {/* 测试模式切换按钮 */}
+                {isTestEnv && (
+                    <button
+                        className="test-mode-toggle"
+                        onClick={() => setTestMode(!testMode)}
+                    >
+                        {testMode ? '关闭测试' : '测试模式'}
+                    </button>
+                )}
+
+                <div className={`intro-screen ${isTransitioning ? 'transitioning' : ''}`}>
+                    <div className="intro-content">
+                        <h1 className="intro-title">六年时光</h1>
+                        <p className="intro-text">
+                            我们一起经历了很多有意义的时刻
+                            <br />
+                            快来找到它们吧
+                        </p>
+                        <button
+                            className="intro-button"
+                            onClick={handleStartGame}
+                        >
+                            开启回忆之门
+                        </button>
+                    </div>
+                    <div className="intro-door-left"></div>
+                    <div className="intro-door-right"></div>
+                    <div className="intro-light"></div>
+                </div>
+
+                {/* 测试模式导航按钮 */}
+                {isTestEnv && testMode && (
+                    <div className="test-nav">
+                        <button
+                            className="test-nav-btn"
+                            onClick={goToPrevScene}
+                            disabled={true}
+                        >
+                            ← 上一页
+                        </button>
+                        <span className="test-nav-info">首页</span>
+                        <button className="test-nav-btn" onClick={goToNextScene}>
+                            下一页 →
+                        </button>
+                    </div>
+                )}
+                </motion.div>
+            ) : gameStage === 'complete' ? (
+                <motion.div
+                    key="complete"
+                    className="app"
+                    initial={{opacity: 0}}
+                    animate={{opacity: 1}}
+                    exit={{opacity: 0}}
+                    transition={{duration: 0.8}}
+                >
                 {/* 测试模式切换按钮 */}
                 {isTestEnv && (
                     <button
@@ -82,30 +162,32 @@ function App() {
                     </p>
                 </div>
 
-                {/* 测试模式返回按钮 */}
+                {/* 测试模式导航按钮 */}
                 {isTestEnv && testMode && (
-                    <button
-                        className="test-nav-btn"
-                        style={{
-                            position: 'fixed',
-                            bottom: '30px',
-                            left: '50%',
-                            transform: 'translateX(-50%)',
-                        }}
-                        onClick={() => {
-                            setGameStage('playing');
-                            setCurrentSceneIndex(scenes.length - 1);
-                        }}
-                    >
-                        ← 返回上一页
-                    </button>
+                    <div className="test-nav">
+                        <button className="test-nav-btn" onClick={goToPrevScene}>
+                            ← 上一页
+                        </button>
+                        <span className="test-nav-info">完成</span>
+                        <button
+                            className="test-nav-btn"
+                            onClick={goToNextScene}
+                            disabled={true}
+                        >
+                            下一页 →
+                        </button>
+                    </div>
                 )}
-            </div>
-        );
-    }
-
-    return (
-        <div className="app">
+                </motion.div>
+            ) : (
+                <motion.div
+                    key={`scene-${currentSceneIndex}`}
+                    className="app"
+                    initial={{opacity: 0}}
+                    animate={{opacity: 1}}
+                    exit={{opacity: 0}}
+                    transition={{duration: 0.8}}
+                >
             <div className="progress-bar">
                 <div
                     className="progress-fill"
@@ -129,7 +211,7 @@ function App() {
                     <button
                         className="test-nav-btn"
                         onClick={goToPrevScene}
-                        disabled={currentSceneIndex === 0}
+                        disabled={false}
                     >
                         ← 上一页
                     </button>
@@ -152,9 +234,11 @@ function App() {
                     foundItems={foundItems}
                     onItemClick={handleItemClick}
                 />
-            </AnimatePresence>
-            <MemoryModal memory={selectedMemory} onClose={handleCloseModal} />
-        </div>
+                </AnimatePresence>
+                <MemoryModal memory={selectedMemory} onClose={handleCloseModal} />
+                </motion.div>
+            )}
+        </AnimatePresence>
     );
 }
 
