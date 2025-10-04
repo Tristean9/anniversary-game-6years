@@ -1,4 +1,7 @@
 import {useEffect, useRef, useState} from 'react';
+import musicSvg from '../assets/music/music.svg';
+import musicDisabledSvg from '../assets/music/music-disabled.svg';
+import musicMp3 from '../assets/music/music.mp3';
 
 export default function MusicPlayer() {
     const audioRef = useRef<HTMLAudioElement>(null);
@@ -46,13 +49,13 @@ export default function MusicPlayer() {
 
     return (
         <>
-            <audio ref={audioRef} src="/music.mp3" loop />
+            <audio ref={audioRef} src={musicMp3} loop />
             <button
                 className={`music-player ${isPlaying ? 'playing' : ''}`}
                 onClick={togglePlay}
             >
                 <img
-                    src={isPlaying ? '/music.svg' : '/music-disabled.svg'}
+                    src={isPlaying ? musicSvg : musicDisabledSvg}
                     alt="音乐"
                 />
             </button>
