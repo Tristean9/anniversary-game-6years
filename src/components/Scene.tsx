@@ -1,5 +1,5 @@
 import {motion} from 'framer-motion';
-import {useLayoutEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import type {Scene as SceneType, ClickableItem as ClickableItemType} from '../types';
 import ClickableItem from '../components/ClickableItem';
 
@@ -12,11 +12,11 @@ interface Props {
 export default function Scene({scene, foundItems, onItemClick}: Props) {
     const [imagesLoaded, setImagesLoaded] = useState(false);
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         setImagesLoaded(false);
 
         const imagePromises = scene.items.map(item => {
-            return new Promise<void>((resolve) => {
+            return new Promise<void>(resolve => {
                 const img = new Image();
                 img.onload = () => resolve();
                 img.onerror = () => resolve();
