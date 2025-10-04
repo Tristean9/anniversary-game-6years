@@ -1,5 +1,5 @@
 import {motion} from 'framer-motion';
-import {useEffect, useState} from 'react';
+import {useEffect} from 'react';
 import type {Scene as SceneType, ClickableItem as ClickableItemType} from '../types';
 import ClickableItem from '../components/ClickableItem';
 
@@ -10,22 +10,10 @@ interface Props {
 }
 
 export default function Scene({scene, foundItems, onItemClick}: Props) {
-    const [imagesLoaded, setImagesLoaded] = useState(false);
-
     useEffect(() => {
-        setImagesLoaded(false);
-
-        const imagePromises = scene.items.map(item => {
-            return new Promise<void>(resolve => {
-                const img = new Image();
-                img.onload = () => resolve();
-                img.onerror = () => resolve();
-                img.src = item.memory.image;
-            });
-        });
-
-        Promise.all(imagePromises).then(() => {
-            setImagesLoaded(true);
+        scene.items.forEach(item => {
+            const img = new Image();
+            img.src = item.memory.image;
         });
     }, [scene]);
 
@@ -33,13 +21,13 @@ export default function Scene({scene, foundItems, onItemClick}: Props) {
         <motion.div
             className="scene"
             initial={{opacity: 0}}
-            animate={{opacity: imagesLoaded ? 1 : 0}}
+            animate={{opacity: 1}}
             exit={{opacity: 0}}
             transition={{duration: 0.8}}
         >
             <div className="scene-background" style={{background: scene.background}}>
                 <h1 className="scene-title">{scene.title}</h1>
-                <div className="scene-items" style={{pointerEvents: imagesLoaded ? 'auto' : 'none'}}>
+                <div className="scene-items">
                     {scene.items.map(item => (
                         <ClickableItem
                             key={item.id}
