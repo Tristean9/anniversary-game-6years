@@ -61,6 +61,16 @@ function App() {
     if (gameStage === 'complete') {
         return (
             <div className="app">
+                {/* 测试模式切换按钮 */}
+                {isTestEnv && (
+                    <button
+                        className="test-mode-toggle"
+                        onClick={() => setTestMode(!testMode)}
+                    >
+                        {testMode ? '关闭测试' : '测试模式'}
+                    </button>
+                )}
+
                 <div className="complete-screen">
                     <h1 className="complete-title">💕 六周年快乐 💕</h1>
                     <p className="complete-message">
@@ -71,6 +81,25 @@ function App() {
                         我爱你 ❤️
                     </p>
                 </div>
+
+                {/* 测试模式返回按钮 */}
+                {isTestEnv && testMode && (
+                    <button
+                        className="test-nav-btn"
+                        style={{
+                            position: 'fixed',
+                            bottom: '30px',
+                            left: '50%',
+                            transform: 'translateX(-50%)',
+                        }}
+                        onClick={() => {
+                            setGameStage('playing');
+                            setCurrentSceneIndex(scenes.length - 1);
+                        }}
+                    >
+                        ← 返回上一页
+                    </button>
+                )}
             </div>
         );
     }
