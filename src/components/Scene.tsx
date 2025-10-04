@@ -1,4 +1,5 @@
 import {motion} from 'framer-motion';
+import {useEffect} from 'react';
 import type {Scene as SceneType, ClickableItem as ClickableItemType} from '../types';
 import ClickableItem from '../components/ClickableItem';
 
@@ -9,6 +10,13 @@ interface Props {
 }
 
 export default function Scene({scene, foundItems, onItemClick}: Props) {
+    useEffect(() => {
+        scene.items.forEach(item => {
+            const img = new Image();
+            img.src = item.memory.image;
+        });
+    }, [scene]);
+
     return (
         <motion.div
             className="scene"
