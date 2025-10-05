@@ -34,6 +34,13 @@ import photo3_2025 from './assets/2025/photo3.jpg';
 import photo4_2025 from './assets/2025/photo4.jpg';
 import photo5_2025 from './assets/2025/photo5.jpg';
 import photo6_2025 from './assets/2025/photo6.jpg';
+import background2025 from './assets/2025/background.jpg';
+import element1_2025 from './assets/2025/element1.png';
+import element2_2025 from './assets/2025/element2.png';
+import element3_2025 from './assets/2025/element3.png';
+import element4_2025 from './assets/2025/element4.png';
+import element5_2025 from './assets/2025/element5.png';
+import element6_2025 from './assets/2025/element6.png';
 
 export const scenes: Scene[] = [
     {
@@ -227,13 +234,17 @@ export const scenes: Scene[] = [
     {
         id: 3,
         title: '2025-永远 · 一直相伴',
-        background: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+        background: '#0c1b25',
+        backgroundImage: background2025,
+        baseWidth: 2730,
+        baseHeight: 1397,
         items: [
             {
                 id: 13,
-                x: 18,
-                y: 27,
-                emoji: '🏠',
+                x: 65,
+                y: 66,
+                icon: element1_2025,
+                size: 7.839,
                 memory: {
                     id: 13,
                     year: '2024',
@@ -244,9 +255,10 @@ export const scenes: Scene[] = [
             },
             {
                 id: 14,
-                x: 48,
-                y: 32,
-                emoji: '💍',
+                x: 29,
+                y: 60,
+                icon: element2_2025,
+                size: 6.154,
                 memory: {
                     id: 14,
                     year: '2024',
@@ -257,9 +269,10 @@ export const scenes: Scene[] = [
             },
             {
                 id: 15,
-                x: 78,
-                y: 37,
-                emoji: '🌹',
+                x: 37.8,
+                y: 84,
+                icon: element3_2025,
+                size: 4.652,
                 memory: {
                     id: 15,
                     year: '2025',
@@ -270,9 +283,10 @@ export const scenes: Scene[] = [
             },
             {
                 id: 16,
-                x: 28,
-                y: 62,
-                emoji: '🎈',
+                x: 90.5,
+                y: 17.2,
+                icon: element4_2025,
+                size: 8.242,
                 memory: {
                     id: 16,
                     year: '2025',
@@ -283,9 +297,10 @@ export const scenes: Scene[] = [
             },
             {
                 id: 17,
-                x: 58,
-                y: 67,
-                emoji: '🌈',
+                x: 62.5,
+                y: 14,
+                icon: element5_2025,
+                size: 14.835,
                 memory: {
                     id: 17,
                     year: '2025',
@@ -296,9 +311,10 @@ export const scenes: Scene[] = [
             },
             {
                 id: 18,
-                x: 88,
-                y: 72,
-                emoji: '💖',
+                x: 44.8,
+                y: 33,
+                icon: element6_2025,
+                size: 2.674,
                 memory: {
                     id: 18,
                     year: '永远',
