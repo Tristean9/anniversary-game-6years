@@ -14,6 +14,13 @@ import photo4_2019 from './assets/2019-2021/photo4.jpg';
 import photo5_2019 from './assets/2019-2021/photo5.jpg';
 import photo6_2019 from './assets/2019-2021/photo6.jpg';
 
+import background2021 from './assets/2021-2025/background.png';
+import element1_2021 from './assets/2021-2025/element1.png';
+import element2_2021 from './assets/2021-2025/element2.png';
+import element3_2021 from './assets/2021-2025/element3.png';
+import element4_2021 from './assets/2021-2025/element4.png';
+import element5_2021 from './assets/2021-2025/element5.png';
+import element6_2021 from './assets/2021-2025/element6.png';
 import photo1_2021 from './assets/2021-2025/photo1.jpg';
 import photo2_2021 from './assets/2021-2025/photo2.jpg';
 import photo3_2021 from './assets/2021-2025/photo3.jpg';
@@ -126,13 +133,17 @@ export const scenes: Scene[] = [
     {
         id: 2,
         title: '2021-2024 · 思念与成长',
-        background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+        background: '#160b1a',
+        backgroundImage: background2021,
+        baseWidth: 2730,
+        baseHeight: 1535,
         items: [
             {
                 id: 7,
-                x: 20,
-                y: 28,
-                emoji: '🎂',
+                x: 53.3,
+                y: 5,
+                icon: element1_2021,
+                size: 4.652,
                 memory: {
                     id: 7,
                     year: '2021',
@@ -143,9 +154,10 @@ export const scenes: Scene[] = [
             },
             {
                 id: 8,
-                x: 50,
-                y: 33,
-                emoji: '✈️',
+                x: 64.5,
+                y: 81,
+                icon: element2_2021,
+                size: 8.168,
                 memory: {
                     id: 8,
                     year: '2022',
@@ -156,9 +168,10 @@ export const scenes: Scene[] = [
             },
             {
                 id: 9,
-                x: 80,
-                y: 38,
-                emoji: '📷',
+                x: 52.5,
+                y: 43,
+                icon: element3_2021,
+                size: 6.996,
                 memory: {
                     id: 9,
                     year: '2022',
@@ -169,9 +182,10 @@ export const scenes: Scene[] = [
             },
             {
                 id: 10,
-                x: 30,
-                y: 63,
-                emoji: '🌟',
+                x: 3.2,
+                y: 41,
+                icon: element4_2021,
+                size: 5.165,
                 memory: {
                     id: 10,
                     year: '2023',
@@ -182,9 +196,10 @@ export const scenes: Scene[] = [
             },
             {
                 id: 11,
-                x: 60,
+                x: 88.8,
                 y: 68,
-                emoji: '💌',
+                icon: element5_2021,
+                size: 8.974,
                 memory: {
                     id: 11,
                     year: '2023',
@@ -195,9 +210,10 @@ export const scenes: Scene[] = [
             },
             {
                 id: 12,
-                x: 90,
-                y: 73,
-                emoji: '🎉',
+                x: 7,
+                y: 27.5,
+                icon: element6_2021,
+                size: 26.777,
                 memory: {
                     id: 12,
                     year: '2024',
