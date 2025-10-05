@@ -8,34 +8,52 @@ interface Props {
 }
 
 export default function ClickableItem({item, onClick, isFound}: Props) {
+    const isImage = Boolean(item.icon);
+    const sizePercent = item.size ?? 8;
+
+    const animate = isFound
+        ? {y: 0}
+        : {y: [0, -10, 0]};
+
+    const transition = isFound
+        ? {duration: 0.3}
+        : {
+            y: {
+                duration: 2,
+                repeat: Infinity,
+                ease: 'easeInOut',
+            },
+        };
+
     return (
         <motion.div
             className="clickable-item"
+            initial={{y: 0}}
             style={{
                 position: 'absolute',
                 left: `${item.x}%`,
                 top: `${item.y}%`,
-                fontSize: '48px',
-                cursor: isFound ? 'default' : 'pointer',
+                cursor: 'pointer',
                 opacity: isFound ? 0.3 : 1,
+                fontSize: isImage ? undefined : '48px',
+                width: isImage ? `${sizePercent}%` : undefined,
             }}
-            onClick={() => !isFound && onClick(item)}
-            whileHover={!isFound ? {scale: 1.2} : {}}
-            whileTap={!isFound ? {scale: 0.9} : {}}
-            animate={!isFound
-                ? {
-                    y: [0, -10, 0],
-                }
-                : {}}
-            transition={{
-                y: {
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: 'easeInOut',
-                },
-            }}
+            onClick={() => onClick(item)}
+            whileHover={{scale: 1.05}}
+            whileTap={{scale: 0.97}}
+            animate={animate}
+            transition={transition}
         >
-            {item.emoji}
+            {isImage
+                ? (
+                    <img
+                        src={item.icon}
+                        alt={item.memory.title}
+                        className="clickable-item-image"
+                        style={{width: '100%', height: 'auto'}}
+                    />
+                )
+                : item.emoji}
         </motion.div>
     );
 }

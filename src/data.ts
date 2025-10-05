@@ -1,5 +1,12 @@
 import type {Scene} from './types';
 
+import background2019 from './assets/2019-2021/background.jpg';
+import element1_2019 from './assets/2019-2021/element1.png';
+import element2_2019 from './assets/2019-2021/element2.png';
+import element3_2019 from './assets/2019-2021/element3.png';
+import element4_2019 from './assets/2019-2021/element4.png';
+import element5_2019 from './assets/2019-2021/element5.png';
+import element6_2019 from './assets/2019-2021/element6.png';
 import photo1_2019 from './assets/2019-2021/photo1.jpg';
 import photo2_2019 from './assets/2019-2021/photo2.jpg';
 import photo3_2019 from './assets/2019-2021/photo3.jpg';
@@ -25,13 +32,17 @@ export const scenes: Scene[] = [
     {
         id: 1,
         title: '2019-2021 · 懵懂又单纯',
-        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+        background: '#0b0c1a',
+        backgroundImage: background2019,
+        baseWidth: 886,
+        baseHeight: 564,
         items: [
             {
                 id: 1,
-                x: 15,
-                y: 25,
-                emoji: '💝',
+                x: 18.5,
+                y: 48,
+                icon: element1_2019,
+                size: 5.42,
                 memory: {
                     id: 1,
                     year: '2019',
@@ -42,9 +53,10 @@ export const scenes: Scene[] = [
             },
             {
                 id: 2,
-                x: 45,
-                y: 30,
-                emoji: '🎬',
+                x: 1.5,
+                y: 40,
+                icon: element2_2019,
+                size: 9.26,
                 memory: {
                     id: 2,
                     year: '2019',
@@ -55,9 +67,10 @@ export const scenes: Scene[] = [
             },
             {
                 id: 3,
-                x: 75,
-                y: 35,
-                emoji: '🌸',
+                x: 12,
+                y: 6,
+                icon: element3_2019,
+                size: 7.67,
                 memory: {
                     id: 3,
                     year: '2020',
@@ -68,9 +81,10 @@ export const scenes: Scene[] = [
             },
             {
                 id: 4,
-                x: 25,
-                y: 60,
-                emoji: '☕',
+                x: 59,
+                y: 71,
+                icon: element4_2019,
+                size: 6.21,
                 memory: {
                     id: 4,
                     year: '2020',
@@ -81,9 +95,10 @@ export const scenes: Scene[] = [
             },
             {
                 id: 5,
-                x: 55,
-                y: 65,
-                emoji: '🎵',
+                x: 93,
+                y: 30,
+                icon: element5_2019,
+                size: 2.14,
                 memory: {
                     id: 5,
                     year: '2021',
@@ -94,9 +109,10 @@ export const scenes: Scene[] = [
             },
             {
                 id: 6,
-                x: 85,
-                y: 70,
-                emoji: '🎁',
+                x: 76.6,
+                y: 16,
+                icon: element6_2019,
+                size: 7.22,
                 memory: {
                     id: 6,
                     year: '2021',
