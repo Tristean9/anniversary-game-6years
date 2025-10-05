@@ -19,7 +19,7 @@ export default function ClickableItem({item, onClick, isFound}: Props) {
         ? {duration: 0.3}
         : {
             y: {
-                duration: 2,
+                duration: 3,
                 repeat: Infinity,
                 ease: 'easeInOut',
             },
@@ -48,7 +48,7 @@ export default function ClickableItem({item, onClick, isFound}: Props) {
                 ? (
                     <img
                         src={item.icon}
-                        alt={item.memory.title}
+                        alt={item.memory.description}
                         className="clickable-item-image"
                         style={{width: '100%', height: 'auto'}}
                     />

@@ -24,8 +24,11 @@ export default function MemoryModal({memory, onClose}: Props) {
                         exit={{scale: 0.8, opacity: 0}}
                         onClick={e => e.stopPropagation()}
                     >
-                        <img src={memory.image} alt={memory.title} className="modal-image" />
-                        <h2 className="modal-title">{memory.title}</h2>
+                        <img
+                            src={memory.image}
+                            alt={memory.description}
+                            className="modal-image"
+                        />
                         <p className="modal-description">{memory.description}</p>
                         <button className="modal-close" onClick={onClose}>
                             继续探索

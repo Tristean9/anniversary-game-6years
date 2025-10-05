@@ -23,6 +23,10 @@ export default function Scene({scene, foundItems, onItemClick}: Props) {
         });
     }, [scene]);
 
+    const wrapperStyle: CSSProperties = useMemo(() => ({
+        background: scene.background,
+    }), [scene.background]);
+
     const surfaceStyle: CSSProperties = useMemo(() => {
         const style: CSSProperties = {
             background: scene.background,
@@ -73,9 +77,9 @@ export default function Scene({scene, foundItems, onItemClick}: Props) {
             exit={{opacity: 0}}
             transition={{duration: 0.8}}
         >
-            <div className="scene-background">
+            <div className="scene-background" style={wrapperStyle}>
+                <h1 className="scene-title">{scene.title}</h1>
                 <div className={surfaceClassName} style={surfaceStyle}>
-                    <h1 className="scene-title">{scene.title}</h1>
                     <div className="scene-items">
                         {scene.items.map(item => (
                             <ClickableItem
