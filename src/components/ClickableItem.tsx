@@ -14,7 +14,7 @@ export default function ClickableItem({item, onClick, isFound}: Props) {
 
     const animate = isFound
         ? {y: 0}
-        : {y: [0, -10, 0]};
+        : {y: [0, -3, 0]};
 
     const transition = isFound
         ? {duration: 0.3}

@@ -54,7 +54,7 @@ export const scenes: Scene[] = [
             {
                 id: 1,
                 x: 18.5,
-                y: 48,
+                y: 48.65,
                 icon: element1_2019,
                 size: 5.42,
                 memory: {
@@ -90,7 +90,7 @@ export const scenes: Scene[] = [
             {
                 id: 4,
                 x: 59,
-                y: 71,
+                y: 70.65,
                 icon: element4_2019,
                 size: 6.21,
                 memory: {
@@ -102,7 +102,7 @@ export const scenes: Scene[] = [
             {
                 id: 5,
                 x: 93,
-                y: 30,
+                y: 31,
                 icon: element5_2019,
                 size: 2.14,
                 memory: {
@@ -135,8 +135,8 @@ export const scenes: Scene[] = [
         items: [
             {
                 id: 7,
-                x: 53.3,
-                y: 5,
+                x: 53.4,
+                y: 4,
                 icon: element1_2021,
                 size: 4.652,
                 memory: {
@@ -148,7 +148,7 @@ export const scenes: Scene[] = [
             {
                 id: 8,
                 x: 64.5,
-                y: 81,
+                y: 80,
                 icon: element2_2021,
                 size: 8.168,
                 memory: {
@@ -172,7 +172,7 @@ export const scenes: Scene[] = [
             {
                 id: 10,
                 x: 3.2,
-                y: 41,
+                y: 39,
                 icon: element4_2021,
                 size: 5.165,
                 memory: {
@@ -184,7 +184,7 @@ export const scenes: Scene[] = [
             {
                 id: 11,
                 x: 88.8,
-                y: 68,
+                y: 67,
                 icon: element5_2021,
                 size: 8.974,
                 memory: {
@@ -196,7 +196,7 @@ export const scenes: Scene[] = [
             {
                 id: 12,
                 x: 7,
-                y: 27.5,
+                y: 26.7,
                 icon: element6_2021,
                 size: 26.777,
                 memory: {
@@ -230,7 +230,7 @@ export const scenes: Scene[] = [
             {
                 id: 14,
                 x: 29,
-                y: 60,
+                y: 59.5,
                 icon: element2_2025,
                 size: 6.154,
                 memory: {
@@ -242,7 +242,7 @@ export const scenes: Scene[] = [
             {
                 id: 15,
                 x: 37.8,
-                y: 84,
+                y: 83.39,
                 icon: element3_2025,
                 size: 4.652,
                 memory: {
@@ -254,7 +254,7 @@ export const scenes: Scene[] = [
             {
                 id: 16,
                 x: 90.5,
-                y: 17.2,
+                y: 16.5,
                 icon: element4_2025,
                 size: 8.242,
                 memory: {
@@ -266,7 +266,7 @@ export const scenes: Scene[] = [
             {
                 id: 17,
                 x: 62.5,
-                y: 14,
+                y: 13.4,
                 icon: element5_2025,
                 size: 14.835,
                 memory: {
@@ -278,7 +278,7 @@ export const scenes: Scene[] = [
             {
                 id: 18,
                 x: 44.8,
-                y: 33,
+                y: 32.55,
                 icon: element6_2025,
                 size: 2.674,
                 memory: {
