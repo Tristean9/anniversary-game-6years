@@ -1,5 +1,6 @@
 import {motion} from 'framer-motion';
 import type {ClickableItem as ClickableItemType} from '../types';
+import './ClickableItem.css';
 
 interface Props {
     item: ClickableItemType;

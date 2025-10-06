@@ -1,5 +1,6 @@
 import {motion, AnimatePresence} from 'framer-motion';
 import type {Memory} from '../types';
+import './MemoryModal.css';
 
 interface Props {
     memory: Memory | null;

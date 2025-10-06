@@ -2,6 +2,7 @@ import {useEffect, useRef, useState} from 'react';
 import musicSvg from '../assets/music/music.svg';
 import musicDisabledSvg from '../assets/music/music-disabled.svg';
 import musicMp3 from '../assets/music/music.mp3';
+import './MusicPlayer.css';
 
 export default function MusicPlayer() {
     const audioRef = useRef<HTMLAudioElement>(null);

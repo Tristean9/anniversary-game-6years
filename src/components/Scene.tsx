@@ -3,6 +3,7 @@ import {useEffect, useMemo} from 'react';
 import type {CSSProperties} from 'react';
 import type {Scene as SceneType, ClickableItem as ClickableItemType} from '../types';
 import ClickableItem from '../components/ClickableItem';
+import './Scene.css';
 
 interface Props {
     scene: SceneType;

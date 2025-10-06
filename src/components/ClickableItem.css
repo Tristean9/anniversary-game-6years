@@ -1,0 +1,9 @@
+.clickable-item {
+    user-select: none;
+}
+
+.clickable-item-image {
+    display: block;
+    pointer-events: none;
+    user-select: none;
+}
