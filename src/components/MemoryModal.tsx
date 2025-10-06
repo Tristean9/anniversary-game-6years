@@ -30,7 +30,7 @@ export default function MemoryModal({memory, onClose}: Props) {
                             alt={memory.description}
                             className="modal-image"
                         />
-                        <p className="modal-description">{memory.description}</p>
+                        <h1 className="modal-description">{memory.description}</h1>
                         <button className="modal-close" onClick={onClose}>
                             继续探索
                         </button>
