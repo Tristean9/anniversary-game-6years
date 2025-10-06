@@ -35,7 +35,6 @@ export default function ClickableItem({item, onClick, isFound}: Props) {
                 left: `${item.x}%`,
                 top: `${item.y}%`,
                 cursor: 'pointer',
-                opacity: isFound ? 0.3 : 1,
                 fontSize: isImage ? undefined : '48px',
                 width: isImage ? `${sizePercent}%` : undefined,
             }}

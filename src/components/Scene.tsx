@@ -1,5 +1,5 @@
 import {motion} from 'framer-motion';
-import {useEffect, useMemo} from 'react';
+import {useEffect, useMemo, useState} from 'react';
 import type {CSSProperties} from 'react';
 import type {Scene as SceneType, ClickableItem as ClickableItemType} from '../types';
 import ClickableItem from '../components/ClickableItem';
@@ -12,6 +12,39 @@ interface Props {
 }
 
 export default function Scene({scene, foundItems, onItemClick}: Props) {
+    const [isBackgroundReady, setIsBackgroundReady] = useState(!scene.backgroundImage);
+
+    useEffect(() => {
+        if (!scene.backgroundImage) {
+            setIsBackgroundReady(true);
+            return;
+        }
+
+        let isActive = true;
+        setIsBackgroundReady(false);
+
+        const backgroundImage = new Image();
+        const handleReady = () => {
+            if (isActive) {
+                setIsBackgroundReady(true);
+            }
+        };
+
+        backgroundImage.addEventListener('load', handleReady);
+        backgroundImage.addEventListener('error', handleReady);
+        backgroundImage.src = scene.backgroundImage;
+
+        if (backgroundImage.complete) {
+            handleReady();
+        }
+
+        return () => {
+            isActive = false;
+            backgroundImage.removeEventListener('load', handleReady);
+            backgroundImage.removeEventListener('error', handleReady);
+        };
+    }, [scene.backgroundImage]);
+
     useEffect(() => {
         scene.items.forEach(item => {
             const memoryImage = new Image();
@@ -70,6 +103,14 @@ export default function Scene({scene, foundItems, onItemClick}: Props) {
         return classes.join(' ');
     }, [scene.baseWidth, scene.baseHeight, scene.backgroundImage]);
 
+    const itemsClassName = isBackgroundReady
+        ? 'scene-items scene-items--ready'
+        : 'scene-items scene-items--loading';
+
+    const counterClassName = isBackgroundReady
+        ? 'found-counter found-counter--ready'
+        : 'found-counter found-counter--loading';
+
     return (
         <motion.div
             className="scene"
@@ -81,7 +122,7 @@ export default function Scene({scene, foundItems, onItemClick}: Props) {
             <div className="scene-background" style={wrapperStyle}>
                 <h1 className="scene-title">{scene.title}</h1>
                 <div className={surfaceClassName} style={surfaceStyle}>
-                    <div className="scene-items">
+                    <div className={itemsClassName}>
                         {scene.items.map(item => (
                             <ClickableItem
                                 key={item.id}
@@ -91,7 +132,7 @@ export default function Scene({scene, foundItems, onItemClick}: Props) {
                             />
                         ))}
                     </div>
-                    <div className="found-counter">
+                    <div className={counterClassName}>
                         已找到: {Array.from(foundItems).filter(id => scene.items.some(item => item.id === id)).length} /
                         {' '}
                         {scene.items.length}
