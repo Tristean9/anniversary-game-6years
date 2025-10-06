@@ -166,9 +166,9 @@ function App() {
                             <div className="complete-screen">
                                 <h1 className="complete-title">💕 六周年快乐 💕</h1>
                                 <p className="complete-message">
-                                    感谢这六年来的陪伴, 未来的每一天, 都想和你一起度过, 永远的宝宝。
+                                    感谢我们六年来的相遇，相识，相知，相爱，相许！
                                 </p>
-                                <p className="complete-end">天行</p>
+                                <p className="complete-end">——&nbsp;天行&nbsp;&nbsp;2025.10.6</p>
                             </div>
 
                             {/* 测试模式导航按钮 */}

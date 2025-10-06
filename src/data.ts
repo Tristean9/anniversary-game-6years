@@ -45,7 +45,7 @@ import element6_2025 from './assets/2025/element6.png';
 export const scenes: Scene[] = [
     {
         id: 1,
-        title: '2019-2021 · 懵懂又单纯',
+        title: '2019-2021 · 懵懂、单纯',
         background: '#0b0c1a',
         backgroundImage: background2019,
         baseWidth: 886,
@@ -127,7 +127,7 @@ export const scenes: Scene[] = [
     },
     {
         id: 2,
-        title: '2021-2024 · 思念与成长',
+        title: '2021-2024 · 思念、成长',
         background: '#160b1a',
         backgroundImage: background2021,
         baseWidth: 2730,
@@ -209,7 +209,7 @@ export const scenes: Scene[] = [
     },
     {
         id: 3,
-        title: '2025-永远 · 一直相伴',
+        title: '2025-永远 · 相依、相伴',
         background: '#0c1b25',
         backgroundImage: background2025,
         baseWidth: 2730,
